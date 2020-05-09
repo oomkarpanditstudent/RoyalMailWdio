@@ -33,6 +33,15 @@ services:
     ports:
       - "5800:5900"
   
-   
-   
-  
+   wdio-framework:
+    image: oomkar/wdio
+    container_name: wdiofw_docrz
+    command: bash -c "npm run docker_grid"
+    depends_on:
+      - selenium-hub
+      - firefox-dbug
+    
+    depends_on:
+      - selenium-hub
+      - firefox-dbug
+      - chrome-dbug
