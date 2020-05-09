@@ -1,0 +1,33 @@
+{
+  "name": "royalmailwdio",
+  "version": "1.0.0",
+  "description": "Sample POC to automate RM.com",
+  "main": "index.js",
+  "scripts": {
+    "test": "wdio",
+    "docker_grid": "./node_modules/.bin/wdio dockerizedwdio.conf.js",
+    "local_chrome": "./node_modules/.bin/wdio wdio.conf.js"
+  },
+  "author": "Oomkar Pandit",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
+    "@wdio/cli": "^6.1.5",
+    "@wdio/cucumber-framework": "^6.1.6",
+    "@wdio/local-runner": "^6.1.6",
+    "@wdio/selenium-standalone-service": "^6.0.16",
+    "@wdio/spec-reporter": "^6.1.5",
+    "@wdio/sync": "^6.1.5",
+    "babel-register": "^6.26.0",
+    "chromedriver": "^81.0.0",
+    "fs-extra": "^9.0.0",
+    "multiple-cucumber-html-reporter": "^1.16.2",
+    "wdio-chromedriver-service": "^6.0.2",
+    "wdio-cucumber-reporter": "0.0.2",
+    "wdio-cucumberjs-json-reporter": "^2.0.1"
+  },
+  "dependencies": {}
+}
