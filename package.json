@@ -1,11 +1,11 @@
 {
   "name": "royalmailwdio",
   "version": "1.0.0",
-  "description": "Sample POC to automate RM.com",
+  "description": "POC to automate RM.com",
   "main": "index.js",
   "scripts": {
     "test": "wdio",
-    "docker_grid": "./node_modules/.bin/wdio dockerizedwdio.conf.js",
+    "docker_grid": "./node_modules/.bin/wdio dockerizedwdio.conf.js --hostname 'selenium-hub'",
     "local_chrome": "./node_modules/.bin/wdio wdio.conf.js"
   },
   "author": "Oomkar Pandit",
