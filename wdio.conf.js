@@ -1,7 +1,6 @@
 const { generate } = require('multiple-cucumber-html-reporter');
 const { removeSync } = require('fs-extra');
-
-
+const cucumberJson = require('wdio-cucumberjs-json-reporter').default;
 exports.config = {
     //
     // ====================
@@ -62,16 +61,28 @@ exports.config = {
         browserName: 'chrome',
         'cjson:metadata': {
             // For a browser
-             device: 'HP Elite Book',
+             device: 'Docker',
              platform: {
-                     version: 'Win 10 Pro'
-                }
+                version: 'Win 10 Pro'
+           }
+             
             }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }],
+    }/*,
+    {
+        browserName: 'firefox',
+        'cjson:metadata': {
+            // For a browser
+             device: 'Docker',
+             platform: {
+                version: 'Win 10 Pro'
+           }
+            }
+    },*/
+    ],
     //
     // ===================
     // Test Configurations
@@ -103,7 +114,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.royalmail.com/	',
+    baseUrl: 'https://www.royalmail.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -119,7 +130,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -138,9 +149,8 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec','cucumberjs-json']
-    ,
-   
+    reporters: ['spec','cucumberjs-json'],
+ //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
@@ -247,11 +257,18 @@ exports.config = {
    // },
     /**
      * Runs after a Cucumber step
-     */
-    // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries }) {
-    // },
-    /**
-     * Runs after a Cucumber scenario
+    *
+    */ 
+    afterStep: function(uri, feature, { error,passed }) {
+        if (error !== undefined) {
+            cucumberJson.attach(browser.takeScreenshot(), 'image/png');
+        }},
+     
+    /*
+  
+  // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries })
+    // {}}
+    * Runs after a Cucumber scenario
      */
     // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
     // },

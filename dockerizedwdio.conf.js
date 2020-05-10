@@ -10,9 +10,10 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
+    protocol: 'http',
     hostname: 'localhost',
     port: 4444,
-    path: '/',
+    path: '/wd/hub',
     //
     // ==================
     // Specify Test Files
@@ -60,8 +61,8 @@ exports.config = {
         //
         browserName: 'chrome',
         'cjson:metadata': {
-            
-             device: 'Docker Grid'
+            // For a browser
+             device: 'Docker',
              
             }
         // If outputDir is provided WebdriverIO can capture driver session logs
@@ -72,7 +73,8 @@ exports.config = {
     {
         browserName: 'firefox',
         'cjson:metadata': {
-             device: 'Docker Grid' 
+            // For a browser
+             device: 'Docker',
             }
     },
     ],
