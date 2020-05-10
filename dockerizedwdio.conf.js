@@ -1,5 +1,4 @@
 const { generate } = require('multiple-cucumber-html-reporter');
-const {After, Status} = require('cucumber');
 const { removeSync } = require('fs-extra');
 const cucumberJson = require('wdio-cucumberjs-json-reporter').default;
 exports.config = {
@@ -13,7 +12,7 @@ exports.config = {
     runner: 'local',
     hostname: 'localhost',
     port: 4444,
-    path: '/wd/hub',
+    path: '/',
     //
     // ==================
     // Specify Test Files
@@ -73,12 +72,9 @@ exports.config = {
     {
         browserName: 'firefox',
         'cjson:metadata': {
-            
-             device: 'Docker Grid'
-             
+             device: 'Docker Grid' 
             }
     },
-
     ],
     //
     // ===================
@@ -111,7 +107,7 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.royalmail.com/	',
+    baseUrl: 'https://www.royalmail.com/',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -256,61 +252,16 @@ exports.config = {
      * Runs after a Cucumber step
     *
     */ 
-    afterStep: function (uri, feature, scenario, step, result) {
-        if (result.status === 'failed') {
-            const path =  './errorShots/'+Date.now()+'.png';
-            browser.saveScreenshot(path);
-            const allitems = $('.slds-icon-waffle');
-            const logoutBut = $('button[title="Logout"]');
-            const adminMenu = $('.oneAppLauncherItemList a[title="Parsable Admin"]');
-            const sfProfilelogo = $('.profileTrigger');
-            const sflogOut = $('.profile-link-label.logout.uiOutputURL');
-            this.allitems.waitForDisplayed();
-            this.allitems.click();
-            this.adminMenu.waitForVisible();
-            this.adminMenu.click();
-            browser.pause(2000)
-            if (this.logoutBut.isVisible()) {   
-                this.logoutBut.click();
-            }
-            this.sfProfilelogo.waitForVisible();
-            this.sfProfilelogo.click();
-            this.sflogOut.waitForVisible();
-            this.sflogOut.click();
-        } 
-        console.log(step.text + ' is ' + result.status)
-    },
     afterStep: function(uri, feature, { error,passed }) {
-       /* if (error !== undefined) {
-            cucumberJson.attach(browser.takeScreenshot(), 'image/png');  
-        
-        }*/
-        if (passed == undefined) {
-            cucumberJson.attach(browser.takeScreenshot(), 'image/png');  
-        
-        }
-    },
+        if (error !== undefined) {
+            cucumberJson.attach(browser.takeScreenshot(), 'image/png');
+        }},
+     
     /*
-   afterStep: function (test, context, { error, result, duration, passed, retries }) {
-    console.log("aaaaaaaaaaaaaaaaa-----------------------fffffffffff");
-    console.log(`Finished test "${test.parent} - ${test.title}"`)
-},
-  //  afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries })
+  
+  // afterStep: function ({ uri, feature, step }, context, { error, result, duration, passed, retries })
     // {}}
-        /*  console.log("aaaaaaaaaaaaaaaaa-----------------------"+step.result+"fffffffffff");
-        console.log("aaaaaaaaaaaaaaaaa-----------------------"+result.status+"fffffffffff");
-        if(step.result === "passed"){
-            console.log("===============Step passed===============")
-         }else{
-            console.log("===============Step failed===============")
-            cucumberJson.attach(browser.takeScreenshot(), 'image/png');  
-        }
-        
-       // cucumberJson.attach();
-    */
-    
-    /**
-     * Runs after a Cucumber scenario
+    * Runs after a Cucumber scenario
      */
     // afterScenario: function (uri, feature, scenario, result, sourceLocation) {
     // },
