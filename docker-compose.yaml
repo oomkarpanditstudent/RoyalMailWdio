@@ -32,16 +32,17 @@ services:
       - HUB_PORT=4444
     ports:
       - "5800:5900"
-  
-   rm_wdio-framework:
+  rm_wdio-framework:
     image: oomkar/rm_wdio
-    container_name: rm_wdio_docrz
+    container_name: rm_wdiofw_docrz
     command: bash -c "npm run docker_grid"
     depends_on:
       - selenium-hub
       - firefox-dbug
-    
+
     depends_on:
       - selenium-hub
       - firefox-dbug
       - chrome-dbug
+   
+  
