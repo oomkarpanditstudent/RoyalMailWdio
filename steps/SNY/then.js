@@ -15,7 +15,7 @@ Then(/^I should see detailed information of "([^"]*)" branch$/, _branchName => {
    _locationtitle.forEach((locationitem,index) => {
        
     if (locationitem.getText()===_branchName){
-       // console.log("Found match for Windsor -------------------------" + locationitem.getText())
+        console.log("Found match for Windsor -------------------------" + locationitem.getText())
      //  _actionitems.forEach((actitem,index) => { if (index===1){actitem.click(); }})
      _actionitems[index].click();
      browser.pause(5000);
