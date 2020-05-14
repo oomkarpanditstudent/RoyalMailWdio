@@ -35,7 +35,7 @@ services:
   rm_wdio-framework:
     image: oomkar/rm_wdio
     container_name: rm_wdiofw_docrz
-    command: bash -c "npm run docker_grid"
+    command: bash -c "npm run docker_grid_jenkins"
     depends_on:
       - selenium-hub
       - firefox-dbug
