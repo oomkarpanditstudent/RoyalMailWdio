@@ -12,7 +12,7 @@ exports.config = {
     runner: 'local',
     hostname: 'localhost',
     port: 4444,
-    path: '/wd/hub',
+    path: '/',
     //
     // ==================
     // Specify Test Files
@@ -61,27 +61,21 @@ exports.config = {
         browserName: 'chrome',
         'cjson:metadata': {
             // For a browser
-             device: 'HP Elite Book',
-             platform: {
-                version: 'Win 10 Pro'
-           }
+             device: 'Docker',
              
             }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }/*,
+    },
     {
         browserName: 'firefox',
         'cjson:metadata': {
             // For a browser
              device: 'Docker',
-             platform: {
-                version: 'Win 10 Pro'
-           }
             }
-    },*/
+    },
     ],
     //
     // ===================
@@ -130,7 +124,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+    services: ['selenium-standalone'],
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber

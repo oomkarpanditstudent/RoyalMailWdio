@@ -2,6 +2,11 @@ const {Then} = require('cucumber');
 
 Then(/^I should see result count text "([^"]*)"$/,  locations => {
     //hardcoded for now
+    if (isMobile==='yes'){
+        console.log(" IS MOBILE: "+ isMobile);
+        $('.button-secondary.postbox-toggle-list').click();
+    }
+   console.log("Outside IF STAT IS MOBILE: "+ isMobile);
    text1=$(".result-count").getText();
    assert.strictEqual(locations,text1) 
 

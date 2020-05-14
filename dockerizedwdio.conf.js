@@ -242,6 +242,7 @@ exports.config = {
      beforeScenario: function (uri, feature, scenario, sourceLocation) {
         assert=require('assert');
         browser.maximizeWindow();
+        isMobile='no';
     },
     /**
      * Runs before a Cucumber step

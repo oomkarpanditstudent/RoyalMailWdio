@@ -10,9 +10,7 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
-    hostname: 'localhost',
-    port: 4444,
-    path: '/wd/hub',
+    
     //
     // ==================
     // Specify Test Files
@@ -46,12 +44,40 @@ exports.config = {
     // from the same test should run tests.
     //
     maxInstances: 10,
+    capabilities : [
+        {
+            // The defaults you need to have in your config
+            platformName: 'Android',
+            browserName: 'chrome',
+            'cjson:metadata': {
+                // For a browser
+                 device: 'Mobile',
+                 
+                },
+            maxInstances: 1,
+            // For W3C the appium capabilities need to have an extension prefix
+            // http://appium.io/docs/en/writing-running-appium/caps/
+            // This is `appium:` for all Appium Capabilities which can be found here
+            'appium:deviceName': 'NXEDU19514031884',
+            //'appium:platformVersion': '10',
+            'appium:orientation': 'PORTRAIT',
+            // `automationName` will be mandatory, see
+            // https://github.com/appium/appium/releases/tag/v1.13.0
+            'appium:automationName': 'UiAutomator2',
+            'appium:newCommandTimeout': 240,
+            'goog:chromeOptions': {
+                w3c: true,
+                // Add this option to prevent the annoying "Welcome"-message
+                args: ['--no-first-run'],
+            },
+        },
+    ],
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
+  /*  capabilities: [{
     
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
@@ -61,28 +87,22 @@ exports.config = {
         browserName: 'chrome',
         'cjson:metadata': {
             // For a browser
-             device: 'HP Elite Book',
-             platform: {
-                version: 'Win 10 Pro'
-           }
+             device: 'Docker',
              
             }
         // If outputDir is provided WebdriverIO can capture driver session logs
         // it is possible to configure which logTypes to include/exclude.
         // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
         // excludeDriverLogs: ['bugreport', 'server'],
-    }/*,
+    },
     {
         browserName: 'firefox',
         'cjson:metadata': {
             // For a browser
              device: 'Docker',
-             platform: {
-                version: 'Win 10 Pro'
-           }
             }
-    },*/
-    ],
+    },
+    ],*/
     //
     // ===================
     // Test Configurations
@@ -91,6 +111,21 @@ exports.config = {
     //
     // Level of logging verbosity: trace | debug | info | warn | error | silent
     logLevel: 'info',
+    services: [
+        [
+            'appium',
+            {
+            // For options see
+            // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
+                args: {
+                // For arguments see
+                // https://github.com/webdriverio/webdriverio/tree/master/packages/wdio-appium-service
+                },
+                command: 'appium',
+            },
+        ],
+    ],
+    port: 4723,
     //
     // Set specific log levels per logger
     // loggers:
@@ -130,7 +165,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver'],
+   
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -247,8 +282,8 @@ exports.config = {
      */
      beforeScenario: function (uri, feature, scenario, sourceLocation) {
         assert=require('assert');
-        browser.maximizeWindow();
-        isMobile='no';
+        isMobile='yes';
+        //browser.maximizeWindow();
     },
     /**
      * Runs before a Cucumber step
