@@ -179,7 +179,7 @@ exports.config = {
     // },
     onPrepare: () => {
         // Remove the `.tmp/` folder that holds the json and report files
-        removeSync('.tmp/');
+        removeSync('Reports/');
       },
       /**
        * Gets executed after all workers got shut down and the process is about to exit.
@@ -190,8 +190,8 @@ exports.config = {
           // Required
           // This part needs to be the same path where you store the JSON files
           // default = '.tmp/json/'
-          jsonDir: '.tmp/json/',
-          reportPath: '.tmp/report/',
+          jsonDir: 'Reports/json/',
+          reportPath: 'Reports/report/',
           // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
         });
       
