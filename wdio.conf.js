@@ -149,7 +149,9 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-    reporters: ['spec','cucumberjs-json'],
+  reporters:  ['spec',['cucumberjs-json', { 
+    jsonDir: '.tmp/' }]],
+ //  reporters:  ['spec','cucumberjs-json'],
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
@@ -192,15 +194,18 @@ exports.config = {
        */
       onComplete: () => {
         // Generate the report when it all tests are done
+    
         generate({
           // Required
           // This part needs to be the same path where you store the JSON files
           // default = '.tmp/json/'
+         
           jsonDir: '.tmp/json/',
           reportPath: '.tmp/report/',
-          // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
+        
+          
+                // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
         });
-      
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
