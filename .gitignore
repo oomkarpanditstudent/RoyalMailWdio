@@ -2,4 +2,3 @@ node_modules/
 *.png
 reports
 docker-log.txt
-.tmp
