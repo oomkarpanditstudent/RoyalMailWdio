@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio",
-    "docker_grid": "./node_modules/.bin/wdio dockerizedwdio.conf.js",
-    "docker_grid_jenkins": "./node_modules/.bin/wdio dockerizedwdiojenkins.conf.js --hostname 'selenium-hub' ",
+    "docker_grid": " ./node_modules/.bin/wdio dockerizedwdio.conf.js",
+    "docker_grid_jenkins": " ./node_modules/.bin/wdio dockerizedwdiojenkins.conf.js --hostname 'selenium-hub' ",
     "local_chrome": "./node_modules/.bin/wdio wdio.conf.js",
-    "android.sauce.rdc.app": "./node_modules/.bin/wdio ./config/saucelabs/wdio.android.rdc.app.conf.js",
+    "android.sauce.rdc.app": "rimraf .tmp/**/*.json && rimraf .tmp/report/*.html && ./node_modules/.bin/wdio ./config/saucelabs/wdio.android.rdc.app.conf.js",
     "android.app": "./node_modules/.bin/wdio ./config/wdio.android.app.conf.js",
     "android.browser": "./node_modules/.bin/wdio appium.js",
     "ios.app": "./node_modules/.bin/wdio ./config/wdio.ios.app.conf.js",
