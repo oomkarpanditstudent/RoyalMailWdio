@@ -160,11 +160,7 @@ exports.config = {
     
  //  reporters:  ['spec','cucumberjs-json'],
  
- reporterOptions:{
-    junit:{
-        outputDir:'./reports/junit-results/'
-    }
- },
+ 
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
