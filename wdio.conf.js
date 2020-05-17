@@ -157,6 +157,11 @@ exports.config = {
     // see also: https://webdriver.io/docs/dot-reporter.html
   reporters:  ['spec',['cucumberjs-json', { 
     jsonDir: '.tmp/' }]],
+    reporterOptions:{
+        junit:{
+            outputDir:'./reports/junit-results/'
+        }
+     },
  //  reporters:  ['spec','cucumberjs-json'],
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
