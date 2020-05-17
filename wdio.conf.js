@@ -1,6 +1,9 @@
 const { generate } = require('multiple-cucumber-html-reporter');
 const { removeSync } = require('fs-extra');
 const cucumberJson = require('wdio-cucumberjs-json-reporter').default;
+require('dotenv').config()
+//console.log(" url "+process.env//)
+
 exports.config = {
     //
     // ====================
@@ -13,6 +16,7 @@ exports.config = {
     hostname: 'localhost',
     port: 4444,
     path: '/wd/hub',
+ 
     //
     // ==================
     // Specify Test Files
@@ -114,7 +118,8 @@ exports.config = {
     // with `/`, the base url gets prepended, not including the path portion of your baseUrl.
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
-    baseUrl: 'https://www.royalmail.com/',
+    baseUrl:process.env[process.env.server]  ,  //url[process.env.server],
+    
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -125,6 +130,7 @@ exports.config = {
     //
     // Default request retries count
     connectionRetryCount: 3,
+
     //
     // Test runner services
     // Services take over a specific job you don't want to take care of. They enhance
@@ -202,8 +208,6 @@ exports.config = {
          
           jsonDir: '.tmp/json/',
           reportPath: '.tmp/report/',
-        
-          
                 // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
         });
     },
@@ -253,7 +257,12 @@ exports.config = {
      beforeScenario: function (uri, feature, scenario, sourceLocation) {
         assert=require('assert');
         browser.maximizeWindow();
-        isMobile='no';
+        if (process.env.ismobile==='yes'){isMobile=process.env.ismobile;}
+        else {isMobile='no';}
+       
+     //  console.log(baseUrl+" value passed by COMMAND Line");
+       console.log(process.env.ismobile+" MOBILE value passed by COMMAND Line");
+       
     },
     /**
      * Runs before a Cucumber step
