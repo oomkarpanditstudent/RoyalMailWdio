@@ -155,12 +155,12 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-  reporters:  ['spec','junit',['cucumberjs-json', { 
+  reporters:  ['spec',['cucumberjs-json', { 
     jsonDir: '.tmp/' }]],
     
  //  reporters:  ['spec','cucumberjs-json'],
  
- 
+
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
         require: ['./steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
