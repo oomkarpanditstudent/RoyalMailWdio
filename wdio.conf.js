@@ -171,10 +171,10 @@ exports.config = {
 
     }],
     [HtmlReporter, {
-        debug: true,
+        debug: false,
         outputDir: './Reports/html-reports/',
         filename: 'report.html',
-        reportTitle: 'Test Report Title',
+        reportTitle: 'Test Execution Report',
         showInBrowser: true,
         useOnAfterCommandForScreenshot: false,
         LOG: log4j.getLogger("default")
