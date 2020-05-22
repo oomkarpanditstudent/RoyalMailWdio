@@ -220,10 +220,11 @@ exports.config = {
     // },
     onPrepare: () => {
         // Remove the `.tmp/` folder that holds the json and report files
-       //removeSync('.tmp/');
-       removeSync('.Reports/');
-     //  const del=require('del');
-      // del(['Reports/allure-results','Reports/html-reports','allure-report']);
+      removeSync('.tmp/');
+      
+      const del=require('del');
+      //del(['Reports']);
+      del(['Reports/allure-results','Reports/html-reports','allure-report','Reports/junit','Reports/jsonReport','Reports']);
       },
       /**
        * Gets executed after all workers got shut down and the process is about to exit.
