@@ -7,7 +7,7 @@ Feature: Enter postcode to search for a branch location
   Background: 
     Given I navigate to the "SNYHome" page
 
-  Scenario: Smoke test SNY functionality
+  Scenario: Smoke Test SNY Functionality
     
   When I enter the postcode "S643HW" in branch finder search box
    And I get matching addresses and I select "Alma Road, Windsor - MoreAddresses"

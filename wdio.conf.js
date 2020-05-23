@@ -2,6 +2,9 @@ const { generate } = require('multiple-cucumber-html-reporter');
 const { removeSync } = require('fs-extra');
 const cucumberJson = require('wdio-cucumberjs-json-reporter').default;
 require('dotenv').config()
+const { ReportAggregator, HtmlReporter } = require('@rpii/wdio-html-reporter') ;
+var log4j = require('log4js');
+
 //console.log(" url "+process.env//)
 
 exports.config = {
@@ -155,9 +158,31 @@ exports.config = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter.html
-  reporters:  ['spec',['cucumberjs-json', { 
-    jsonDir: '.tmp/' }]],
-    
+  reporters:  ['spec', 
+    ['json',{outputDir: './Reports/jsonReport'}], 
+    ['cucumberjs-json', { jsonDir: './Reports/.tmp/' }],
+    ['junit', {outputDir: './Reports/junit/', outputFileFormat: function(options) {
+    return `junit-results.xml` }}],
+    ['allure', {
+        outputDir: './Reports/allure-results',
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+        useCucumberStepReporter:true
+
+    }],
+    [HtmlReporter, {
+        debug: false,
+        outputDir: './Reports/html-reports/',
+        filename: 'report.html',
+        reportTitle: 'Test Execution Report',
+        showInBrowser: true,
+        useOnAfterCommandForScreenshot: false,
+        LOG: log4j.getLogger("default")
+    }
+    ]
+    ],
+ 
+
  //  reporters:  ['spec','cucumberjs-json'],
  
 
@@ -195,13 +220,17 @@ exports.config = {
     // },
     onPrepare: () => {
         // Remove the `.tmp/` folder that holds the json and report files
-        removeSync('.tmp/');
+      removeSync('.tmp/');
+      
+      const del=require('del');
+      //del(['Reports']);
+      del(['Reports/allure-results','Reports/html-reports','allure-report','Reports/junit','Reports/jsonReport','Reports']);
       },
       /**
        * Gets executed after all workers got shut down and the process is about to exit.
        */
       onComplete: () => {
-        // Generate the report when it all tests are done
+       //  Generate the report when it all tests are done
     
         generate({
           // Required
@@ -279,6 +308,8 @@ exports.config = {
     afterStep: function(uri, feature, { error,passed }) {
         if (error !== undefined) {
             cucumberJson.attach(browser.takeScreenshot(), 'image/png');
+           // var name='Error-'+Date.now();
+           // browser.saveScreenshot('./Reports/errorShots/'+name+'.png');
         }},
      
     /*
