@@ -52,7 +52,7 @@
     "multiple-cucumber-html-reporter": "^1.16.2",
     "node-fetch": "^2.6.0",
     "selenium-standalone": "^6.17.0",
-    "wdio-chromedriver-service": "^6.0.2",
+    "wdio-chromedriver-service": "^6.0.3",
     "wdio-cucumber-reporter": "0.0.2",
     "wdio-cucumberjs-json-reporter": "^2.0.1",
     "wdio-json-reporter": "^2.0.0",
