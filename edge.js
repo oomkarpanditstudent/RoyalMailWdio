@@ -16,11 +16,17 @@ exports.config = {
     // WebdriverIO allows it to run your tests in arbitrary locations (e.g. locally or
     // on a remote machine).
     runner: 'local',
-    hostname: 'localhost',
-    port: 4444,
+    host:'localhost',
+    port: 4444, // default for EdgeDriver
     path: '/wd/hub',
-    user: process.env.BROWSERSTACK_USERNAME,
-    key: process.env.BROWSERSTACK_ACCESS_KEY,
+    // ...
+    services: ['selenium-standalone'],
+   
+    // options
+   // edgeDriverArgs: ['--port=17556'], // default for EdgeDriver
+    //edgeDriverLogs: './',
+    // ...
+    
     //
     // ==================
     // Specify Test Files
@@ -59,13 +65,7 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{
-        'os': 'Windows',
-        'os_version': '10',
-        'browser': 'Edge',
-        'browser_version': '81.0',
-        'resolution': '1024x768'
-      }],
+    capabilities: [{  browserName: 'MicrosoftEdge'}],
     //
     // ===================
     // Test Configurations
@@ -115,7 +115,7 @@ exports.config = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['browserstack'],
+
     
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
@@ -198,6 +198,7 @@ exports.config = {
         // Remove the `.tmp/` folder that holds the json and report files
       removeSync('.tmp/');
       
+      
       const del=require('del');
       //del(['Reports']);
       del(['Reports/allure-results','Reports/html-reports','allure-report','Reports/junit','Reports/jsonReport','Reports']);
@@ -217,7 +218,8 @@ exports.config = {
           reportPath: '.tmp/report/',
                 // for more options see https://github.com/wswebcreation/multiple-cucumber-html-reporter#options
         });
-    },
+       
+     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
      * for that worker as well as modify runtime environments in an async fashion.
