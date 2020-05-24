@@ -8,7 +8,7 @@
     "docker_grid": " ./node_modules/.bin/wdio dockerizedwdio.conf.js",
     "docker_grid_jenkins": " ./node_modules/.bin/wdio dockerizedwdiojenkins.conf.js --hostname 'selenium-hub' ",
     "local_chrome": "./node_modules/.bin/wdio wdio.conf.js",
-    "start-server": "webdriver-manager start --edge msedgedriver.exe --detach",
+    "start-server": "webdriver-manager start --edge ./drivers/msedgedriver.exe --detach",
     "stop-server": "webdriver-manager shutdown ",
     "edge": "./node_modules/.bin/wdio edge.js",
     "bstack": "./node_modules/.bin/wdio bstack.js",
