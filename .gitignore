@@ -5,3 +5,5 @@ docker-log.txt
 .tmp
 debug.log
 Reports
+notes.txt
+EdgeDriver.txt
