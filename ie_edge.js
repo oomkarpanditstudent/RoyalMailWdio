@@ -65,7 +65,7 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{  browserName: 'MicrosoftEdge'}],
+    capabilities: [{  browserName: 'MicrosoftEdge'},{  browserName: 'internet explorer'}],
     //
     // ===================
     // Test Configurations
