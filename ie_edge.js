@@ -17,7 +17,7 @@ exports.config = {
     // on a remote machine).
     runner: 'local',
     host:'localhost',
-    port: 4444, // default for EdgeDriver
+    port: 1234, 
     path: '/wd/hub',
     // ...
     services: ['selenium-standalone'],
