@@ -17,11 +17,11 @@ exports.config = {
     // on a remote machine).
     runner: 'local',
     host:'localhost',
-    port: 1234, 
+    port: 4444, 
     path: '/wd/hub',
     // ...
     services: ['selenium-standalone'],
-   
+    capabilities: [{  browserName: 'MicrosoftEdge'},{  browserName: 'internet explorer'}],
     // options
    // edgeDriverArgs: ['--port=17556'], // default for EdgeDriver
     //edgeDriverLogs: './',
@@ -65,7 +65,7 @@ exports.config = {
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://docs.saucelabs.com/reference/platforms-configurator
     //
-    capabilities: [{  browserName: 'MicrosoftEdge'},{  browserName: 'internet explorer'}],
+    //capabilities: [{  browserName: 'MicrosoftEdge'},{  browserName: 'internet explorer'}],
     //
     // ===================
     // Test Configurations
