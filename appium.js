@@ -190,7 +190,11 @@ exports.config = {
  //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
-        require: ['./steps/**/*.js'],        // <string[]> (file/dir) require files before executing features
+        require: [
+            "./steps/**/given.js",
+            "./steps/**/when.js",
+            "./steps/**/then.js"
+          ],    // <string[]> (file/dir) require files before executing features
         backtrace: false,   // <boolean> show full backtrace for errors
         requireModule: [],  // <string[]> ("extension:module") require files with the given EXTENSION after requiring MODULE (repeatable)
         dryRun: false,      // <boolean> invoke formatters without executing steps
@@ -257,8 +261,9 @@ exports.config = {
      * @param {Array.<Object>} capabilities list of capabilities details
      * @param {Array.<String>} specs List of spec file paths that are to be run
      */
-    // beforeSession: function (config, capabilities, specs) {
-    // },
+    beforeSession: function (config, capabilities, specs) {
+        require("@babel/register");
+     },
     /**
      * Gets executed before test execution begins. At this point you can access to all global
      * variables like `browser`. It is the perfect place to define custom commands.

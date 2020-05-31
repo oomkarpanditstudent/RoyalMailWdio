@@ -18,8 +18,6 @@ Feature: Enter postcode to search for a branch location
    
    
    
-   
-   
     # And I should see nearest 5 branch details as below:
     #  | Branch Address                                       
     
