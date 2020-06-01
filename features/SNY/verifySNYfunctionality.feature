@@ -13,14 +13,9 @@ Feature: Enter postcode to search for a branch location
    And I get matching addresses and I select "Alma Road, Windsor - MoreAddresses"
    And I get more matching addresses and I select "37 Alma Road"
    Then I should see result count text "Showing 5 locations"
-   And I should see detailed information of "Windsor" branch
-   
-   
-   
-   
+   And I should see detailed information of "Windsor" branch  
     # And I should see nearest 5 branch details as below:
-    #  | Branch Address                                       
-    
+    #  | Branch Address                                        | Branch Name                         |
     #  | 38 - 39 Peascod Street, Windsor, Berkshire, SL4 1AA   | Windsor                             |
     #  | William Street, Windsor, SL4 1AA                      | The Queen Elizabeth Delivery Office |
     #  | 113-117 Springfield Road, Windsor, Berkshire, SL4 3PZ | Springfield Road                    |
