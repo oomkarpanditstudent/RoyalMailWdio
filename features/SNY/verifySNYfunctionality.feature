@@ -10,7 +10,7 @@ Background:
 Scenario: Smoke Test SNY Functionality
     
   When I enter the postcode "S643HW" in branch finder search box
-   And I get matching addresses and I select "Alma Road, Windsor - MoreAddresses"
+   And I get matching addresses and I select "Alma Road, Windsor - More Addresses"
    And I get more matching addresses and I select "37 Alma Road"
   Then I should see result count text "Showing 5 locations"
    And I should see detailed information of "Windsor" branch

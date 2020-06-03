@@ -6,8 +6,6 @@ class SNYAddressResultPage {
     get branchNames(){ return $$('.location-title');}
     get branchAddresses(){ return $$('.location-address');}
     
-    
-    
 checkResultCount(locations){
     if (driver.isMobile){
         this.toggle.click();

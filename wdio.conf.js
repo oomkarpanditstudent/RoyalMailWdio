@@ -122,7 +122,7 @@ exports.config = {
     // If your `url` parameter starts without a scheme or `/` (like `some/path`), the base url
     // gets prepended directly.
     baseUrl:process.env[process.env.server]  ,  //url[process.env.server],
-    
+  //  baseUrl:'http://www.royalmail.com',
     //
     // Default timeout for all waitFor* commands.
     waitforTimeout: 10000,
@@ -293,11 +293,6 @@ exports.config = {
      beforeScenario: function (uri, feature, scenario, sourceLocation) {
         assert=require('assert');
         browser.maximizeWindow();
-        if (process.env.ismobile==='yes'){isMobile=process.env.ismobile;}
-        else {isMobile='no';}
-       
-     //  console.log(baseUrl+" value passed by COMMAND Line");
-       console.log(process.env.ismobile+" MOBILE value passed by COMMAND Line");
        
     },
     /**
