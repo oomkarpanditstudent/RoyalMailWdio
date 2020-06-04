@@ -7,7 +7,7 @@ Feature: Enter postcode to search for a branch location
 Background: 
   Given I navigate to the "SNYHome" page
 
-Scenario: Smoke Test SNY Functionality
+Scenario: Smoke Test SNY Functionality using data table
     
   When I enter the postcode "S643HW" in branch finder search box
    And I get matching addresses and I select "Alma Road, Windsor - More Addresses"
@@ -21,3 +21,16 @@ Scenario: Smoke Test SNY Functionality
       | 113-117 Springfield Road, Windsor, Berkshire, SL4 3PZ | Springfield Road                    |
       | 124 High Street, Eton, Windsor, Berkshire, SL4 6AN    | Eton                                |
       | Upper Vale Road, Windsor, Berkshire, SL4 5JR          | Upper Vale Road                     |
+
+ Scenario Outline: Smoke Test SNY Functionality using examples
+    
+  When I enter the postcode "S643HW" in branch finder search box
+   And I get matching addresses and I select "Alma Road, Windsor - More Addresses"
+   And I get more matching addresses and I select "37 Alma Road"
+  Then I should see result count text "Showing 5 locations"
+   And I should see detailed information of "<Branch Name>" branch
+  Examples:
+  | Branch Name            |  
+  | Eton                   |  
+  | Upper Vale Road        |  
+  
