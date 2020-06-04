@@ -16,10 +16,9 @@ checkBranchDetail(branchName){
    //looping to get to right postoffice
    this.branchNames.forEach((branchItem,index) => {   
     if (branchItem.getText()===branchName){
-        console.log("Found match for Windsor -------------------------" + branchItem.getText());
-     this.moreInfoBtn[index].click();
+        this.moreInfoBtn[index].click();
     }
-    console.log("Not Found Match");
+    console.log("Not Found Match For Branch {branchName}");
    })
 }
 checkNearestBranches(nearestBranchesData){
@@ -42,7 +41,7 @@ console.table(baddress)
 console.table(bname)
 console.table(dtbranchadd)
 console.table(dtbranchname)
-
+//validate the data by applying below assertion
 assert.deepEqual(baddress,dtbranchadd);
 assert.deepEqual(bname,dtbranchname);
 }
