@@ -18,7 +18,7 @@ pipeline {
          post{  
          always{
               bat 'docker-compose down'
-              archiveArtifacts artifacts: '.tmp/**' 
+              archiveArtifacts HTML-REPORTS: '.tmp/**' 
                }
         }                    
 }
