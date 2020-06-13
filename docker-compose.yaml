@@ -32,10 +32,10 @@ services:
   rm_wdio-framework:
     image: node:12.13.1
     volumes:
-      - ./:/tmp/webdriverio-cucumber
+      - ./:/tmp
     container_name: rm_wdiofw_docrz
-    working_dir: /tmp/webdriverio-cucumber
-    command: bash -c "npm install && npm run docker_grid_jenkins"
+    working_dir: /tmp
+    command: bash -c "npm install & npm run docker_grid_jenkins"
     depends_on:
       - selenium-hub
       - firefox-dbug
