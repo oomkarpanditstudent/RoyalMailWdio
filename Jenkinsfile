@@ -18,7 +18,10 @@ pipeline {
          post{  
          always{
               bat 'docker-compose down'
-              archiveArtifacts HTML-REPORTS: '.tmp/**' 
+              archiveArtifacts artifacts: '.tmp/**' 
+              junit 'Reports/**/*.xml'
+              archive 'Reports/**'
+              archive '.tmp/**'
                }
         }                    
 }
