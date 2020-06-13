@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "wdio",
-    "docker_grid": " ./node_modules/.bin/wdio dockerizedwdio.conf.js",
-    "docker_grid_jenkins": " ./node_modules/.bin/wdio dockerizedwdiojenkins.conf.js --hostname 'selenium-hub' ",
+    "docker_grid": "./node_modules/.bin/wdio dockerizedwdio.conf.js",
+    "docker_grid_jenkins": "./node_modules/.bin/wdio dockerizedwdiojenkins.conf.js --hostname 'selenium-hub' ",
     "local_chrome": "./node_modules/.bin/wdio wdio.conf.js",
     "start-server": "webdriver-manager start --edge ./drivers/msedgedriver.exe  --seleniumPort 4444  --detach",
     "stop-server": "webdriver-manager shutdown ",
