@@ -3,11 +3,6 @@ pipeline {
    
      stages {
 
-        stage('Docker base image- checking for latest') {
-            steps {
-                bat 'docker pull oomkar/rm_wdio' 
-            }
-        }
         stage('Build - Set up GRID') { 
              
             steps { 
