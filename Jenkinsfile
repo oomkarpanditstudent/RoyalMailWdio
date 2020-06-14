@@ -19,9 +19,6 @@ pipeline {
          always{
               bat 'docker-compose down'
               archiveArtifacts artifacts: '.tmp/**' 
-              junit 'Reports/**/*.xml'
-              archive 'Reports/**'
-              archive '.tmp/**'
                }
         }                    
 }
